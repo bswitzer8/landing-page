@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card img {
+      max-height: 200px;
+      object-fit: cover;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .card-description {
+      font-size: 1rem;
+    }
+    .card-button {
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container pt-4">
+    <div class="row" id="website-cards"></div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    const websites = [
+      { url: 'https://example1.com', name: 'Example 1', image: 'https://via.placeholder.com/150', description: 'This is example 1' },
+      { url: 'https://example2.com', name: 'Example 2', image: 'https://via.placeholder.com/150', description: 'This is example 2' },
+      { url: 'https://example3.com', name: 'Example 3', image: 'https://via.placeholder.com/150', description: 'This is example 3' },
+      // Add more websites as needed
+    ];
+
+    const websiteCards = document.getElementById('website-cards');
+
+    websites.forEach(website => {
+      const col = document.createElement('div');
+      col.className = 'col-md-4 mb-4';
+
+      const card = document.createElement('div');
+      card.className = 'card h-100';
+
+      const img = document.createElement('img');
+      img.className = 'card-img-top';
+      img.src = website.image;
+      img.alt = website.name;
+
+      const cardBody = document.createElement('div');
+      cardBody.className = 'card-body d-flex flex-column';
+
+      const cardTitle = document.createElement('h5');
+      cardTitle.className = 'card-title';
+      cardTitle.textContent = website.name;
+
+      const cardDescription = document.createElement('p');
+      cardDescription.className = 'card-description';
+      cardDescription.textContent = website.description;
+
+      const cardButton = document.createElement('a');
+      cardButton.className = 'btn btn-primary card-button';
+      cardButton.href = website.url;
+      cardButton.textContent = 'Visit';
+
+      cardBody.appendChild(cardTitle);
+      cardBody.appendChild(cardDescription);
+      cardBody.appendChild(cardButton);
+
+      card.appendChild(img);
+      card.appendChild(cardBody);
+
+      col.appendChild(card);
+      websiteCards.appendChild(col);
+    });
+  </script>
+</body>
+</html>
